@@ -1,0 +1,1 @@
+Separar el Back-End (la lógica en Python) y el Front-End (lo que ve el usuario) ayuda a que el proyecto esté más ordenado. Si quiero cambiar algo del diseño, lo hago solo en la plantilla base, y todas las demás páginas también cambian
