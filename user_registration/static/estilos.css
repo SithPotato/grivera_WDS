@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Calibri', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f0eb;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px; /* separa el título del borde superior */
+    margin-top: 30px; /* separa el título del borde superior */
 }
 
 h1 {
@@ -55,7 +55,7 @@ input[type="submit"] {
     border: none;
     width: 100%;
     border-radius: 6px;
-    cursor: pointer;
+    cursor: pinter;
 }
 
 input[type="submit"]:hover {

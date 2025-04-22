@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Lista en memoria para almacenar los usuarios
 usuarios = []
 
-@app.route('/info', methods=['GET'])
+@app.route('/', methods=['GET'])
 def info():
     return jsonify({
         "nombre": "Sistema de Gestión de Usuarios y Productos",
