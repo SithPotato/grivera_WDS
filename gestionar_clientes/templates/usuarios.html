@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Usuarios</h1>
+
+        <div class="listado">
+            {% for usuario in usuarios %}
+                <div class="item">
+                    <strong>Nombre:</strong> {{ usuario.nombre }}<br>
+                    <strong>Correo:</strong> {{ usuario.correo }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
