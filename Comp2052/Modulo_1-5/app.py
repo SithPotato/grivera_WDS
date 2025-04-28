@@ -1,40 +1,32 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-# Lista en memoria para almacenar los usuarios
-usuarios = []
-
-@app.route('/', methods=['GET'])
+# Ruta GET /info
+@app.route('/info', methods=['GET'])
 def info():
     return jsonify({
-        "nombre": "Sistema de Gestión de Usuarios y Productos",
+        "app": "Servidor Flask Básico",
         "version": "1.0",
-        "autor": "GRR",
-        "descripcion": "API para registrar usuarios y listar usuarios"
+        "author": "Gabriel"
     })
 
-@app.route('/crear_usuario', methods=['GET'])
-def crear_usuario():
+# Ruta POST /mensaje
+@app.route('/mensaje', methods=['POST'])
+def mensaje():
     data = request.get_json()
+    mensaje = data.get('mensaje', '')
     
-    if not data:
-        return jsonify({"error": "No se proporcionaron datos JSON"}), 400
-    
-    nombre = data.get('nombre')
-    correo = data.get('correo')
-    
-    if not nombre or not correo:
-        return jsonify({"error": "Se requieren los campos 'nombre' y 'correo'"}), 400
-    
-    nuevo_usuario = {"nombre": nombre, "correo": correo}
-    usuarios.append(nuevo_usuario)
-    
-    return jsonify({"mensaje": "Usuario creado exitosamente", "usuario": nuevo_usuario}), 201
+    if mensaje:
+        respuesta = f"Recibí tu mensaje: {mensaje}"
+        return jsonify({"respuesta": respuesta})
+    else:
+        return jsonify({"error": "No se recibió ningún mensaje"}), 400
 
-@app.route('/usuarios', methods=['GET'])
-def obtener_usuarios():
-    return jsonify(usuarios)
+# Ruta principal para cargar la página web
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
